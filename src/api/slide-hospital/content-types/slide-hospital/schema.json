@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slide_hospitals",
+  "info": {
+    "singularName": "slide-hospital",
+    "pluralName": "slide-hospitals",
+    "displayName": "slideHospital",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imagePc": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

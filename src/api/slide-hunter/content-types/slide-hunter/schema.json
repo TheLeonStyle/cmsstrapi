@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slide_hunters",
+  "info": {
+    "singularName": "slide-hunter",
+    "pluralName": "slide-hunters",
+    "displayName": "slideHunter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imagePc": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

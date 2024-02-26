@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slide_ameolis",
+  "info": {
+    "singularName": "slide-ameoli",
+    "pluralName": "slide-ameolis",
+    "displayName": "slideAmeoli",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imagePc": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
