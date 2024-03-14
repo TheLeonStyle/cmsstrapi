@@ -585,6 +585,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -736,49 +783,28 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
+export interface ApiIconIcon extends Schema.SingleType {
+  collectionName: 'icons';
   info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
+    singularName: 'icon';
+    pluralName: 'icons';
+    displayName: 'icon';
   };
   options: {
     draftAndPublish: false;
   };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
+    logo: Attribute.Media & Attribute.Required;
+    logoText: Attribute.String & Attribute.Required;
+    iconHead: Attribute.Media & Attribute.Required;
+    iconHunter: Attribute.Media & Attribute.Required;
+    iconHospital: Attribute.Media & Attribute.Required;
+    iconAmeoli: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::icon.icon', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -937,6 +963,37 @@ export interface ApiSlideHunterSlideHunter extends Schema.CollectionType {
   };
 }
 
+export interface ApiSlideMainSlideMain extends Schema.CollectionType {
+  collectionName: 'slide_mains';
+  info: {
+    singularName: 'slide-main';
+    pluralName: 'slide-mains';
+    displayName: 'slideMain';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    imagePc: Attribute.Media & Attribute.Required;
+    imageMobile: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::slide-main.slide-main',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::slide-main.slide-main',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -951,15 +1008,17 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
+      'api::icon.icon': ApiIconIcon;
       'api::privacy.privacy': ApiPrivacyPrivacy;
       'api::slide-ameoli.slide-ameoli': ApiSlideAmeoliSlideAmeoli;
       'api::slide-head.slide-head': ApiSlideHeadSlideHead;
       'api::slide-hospital.slide-hospital': ApiSlideHospitalSlideHospital;
       'api::slide-hunter.slide-hunter': ApiSlideHunterSlideHunter;
+      'api::slide-main.slide-main': ApiSlideMainSlideMain;
     }
   }
 }

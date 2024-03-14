@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slide_mains",
+  "info": {
+    "singularName": "slide-main",
+    "pluralName": "slide-mains",
+    "displayName": "slideMain",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imagePc": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
